@@ -1,0 +1,91 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Mobile Portal</title>  
+<style>   
+Body {   
+  background-image: url('https://wallpaper.dog/large/17008240.jpg');  
+}  
+button {   
+       background-color: #8dfaaf;   
+       width: 100%;  
+        color: rgb(10, 8, 8);   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+ form {   
+        border: 3px solid #f1f1f1;   
+    }   
+ input[type=text], input[type=IMEINumber] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid powderblue;   
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ .container {   
+        padding: 25px;   
+        background-color: #75ccdb;  
+    }  
+   fieldset{
+       color: white;
+       text-align: center;
+       
+   }
+</style>   
+</head>    
+<body>    
+    <center> <h1 textalign="center" style="color:rgb(248, 247, 247)" >M-MSR</h1> </center>   
+    <form id="contract-form" method="post" action="/enrollsupplyId">  
+        <div class="container">   
+            <label>org </label>   
+            <input type="text" placeholder="Enter org" name="org" id="org" required> 
+            <label>location </label>   
+            <input type="text" placeholder="Enter location" name="location" id="location" required>
+            <label>contact </label>   
+            <input type="text" placeholder="Enter contact" name="contact" id="contact" required> 
+            <label>Id </label>   
+            <input type="text" placeholder="Enter Id" name="Id" id="Id" required>    
+            <button type="submit" value="enrollsupplyId">SUBMIT</button>   
+                           
+        </div>   
+    </form><br><br><br>   
+    <fieldset>
+  
+    <div id="get">
+        <input type="text" placeholder="Enter org" name="org" id="organization" >
+        <button onclick="myajax()"> GET SUPPLIER DETAILS </button>
+    </div>     
+    </fieldset>
+    
+        
+    <script>
+     function myajax(){
+        var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("get").innerHTML = this.responseText;
+            }
+            };
+            var supplyId=document.getElementById("organization").value;
+            console.log("supplyId",supplyId);
+            xhttp.open("GET", "/getsupplyId?org="+supplyId, true);
+            xhttp.send();
+        }
+    </script>  
+</body>     
+</html>
